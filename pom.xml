@@ -10,7 +10,7 @@
     </parent>
     <groupId>be.nicholasmeyers</groupId>
     <artifactId>six-letter-words-api</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>six-letter-words-api</name>
     <description>six-letter-words-api</description>
     <properties>
