@@ -14,6 +14,10 @@ else
   ./mvnw versions:set -DnewVersion="$VERSION"
   echo "Maven version updated to $VERSION"
   git add pom.xml
+  git add word-domain/pom.xml
+  git add word-usecase/pom.xml
+  git add word-adapter/pom.xml
+  git add application/pom.xml
   git commit -m "chore(release): Bump version to $VERSION"
   git push
 
