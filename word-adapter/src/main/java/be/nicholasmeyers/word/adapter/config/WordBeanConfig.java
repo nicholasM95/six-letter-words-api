@@ -28,7 +28,9 @@ public class WordBeanConfig {
         beanDefinitionScanner.scan(
                 "be.nicholasmeyers.word.usecase",
                 "be.nicholasmeyers.word.domain",
-                "be.nicholasmeyers.word.adapter.controller"
+                "be.nicholasmeyers.word.adapter.controller",
+                "be.nicholasmeyers.word.adapter.repository",
+                "be.nicholasmeyers.word.adapter.storage"
         );
     }
 

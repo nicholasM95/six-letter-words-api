@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  postgres:
+    container_name: postgres
+    hostname: postgres
+    image: postgres:14.7-alpine3.17
+    environment:
+      POSTGRES_PASSWORD: word
+      POSTGRES_DB: word
+    ports:
+      - 5432:5432
+  localstack:
+    container_name: localstack
+    hostname: localstack
+    image: localstack/localstack:3.0
+    environment:
+      AWS_ACCESS_KEY_ID: foobar
+      AWS_SECRET_ACCESS_KEY: foobar
+      AWS_DEFAULT_REGION: us-east-1
+    ports:
+      - 4566:4566
+    volumes:
+      - "./init-s3.py:/etc/localstack/init/ready.d/init-s3.py"
+
