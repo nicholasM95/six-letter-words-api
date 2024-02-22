@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Six Letter Words API
-  version: 1.0.0
+  version: 1.0.1
 servers:
   - url: http://localhost:8080
 tags:
@@ -17,13 +17,22 @@ paths:
       requestBody:
         required: true
         content:
-          text/plain:
+          multipart/form-data:
             schema:
-              type: string
-              format: binary
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
       responses:
-        200:
+        201:
           description: File successfully processed
+          headers:
+            Location:
+              description: The location where the resource was created
+              schema:
+                type: string
+                example: /word/2deaad99-d8a1-45bd-8e0f-788e154cf44e
           content:
             application/json:
               schema:
@@ -32,6 +41,49 @@ paths:
                   $ref: '#/components/schemas/WordResponseResource'
         400:
           description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponseResource'
+    get:
+      tags:
+        - word
+      operationId: getWordFiles
+      summary: Find all files
+      responses:
+        200:
+          description: Request successfully processed
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WordFileResponseResource'
+  /word/{id}:
+    get:
+      tags:
+        - word
+      operationId: getWordFileById
+      summary: Find result by id
+      parameters:
+        - name: id
+          in: path
+          description: file id
+          required: true
+          schema:
+            type: string
+            example: 2deaad99-d8a1-45bd-8e0f-788e154cf44e
+      responses:
+        200:
+          description: Request successfully processed
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WordResponseResource'
+        404:
+          description: Not found
           content:
             application/json:
               schema:
@@ -56,6 +108,20 @@ components:
           example:
             - fo
             - bar
+    WordFileResponseResource:
+      required:
+        - id
+        - file
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of the upload
+          example: 2deaad99-d8a1-45bd-8e0f-788e154cf44e
+        file:
+          type: string
+          description: Filename of the upload
+          example: 1728555000_file.txt
     ProblemDetailResponseResource:
       required:
         - title

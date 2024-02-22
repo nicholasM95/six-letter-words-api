@@ -1,0 +1,4 @@
+bucket:
+  name: ${BUCKET_NAME}
+
+spring.datasource.type: be.nicholasmeyers.word.adapter.config.RDSIAMDataSource

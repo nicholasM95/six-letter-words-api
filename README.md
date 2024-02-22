@@ -1,16 +1,21 @@
 # Six Letter Words Api
 
-## Build docker
+## Run locally
+This project includes a pre-configured run setup for IntelliJ IDEA. 
+To start the local development environment, Docker Compose must be available, and Docker must be running on your machine.
+
+## Test endpoints
 ```bash
-./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=six-letter-words-api:1.0.0 -pl application
+curl http://localhost:8080/word --form file=@"word.txt"
+```
+```bash
+curl http://localhost:8080/word
+```
+```bash
+curl http://localhost:8080/word/{id}
 ```
 
-## Start docker
-```bash
-docker run -p 8080:8080 six-letter-words-api:1.0.0
-```
 
-## Start docker from public repository
-```bash
-docker run -p 8080:8080 ghcr.io/nicholasm95/six-letter-words-api:1.0.0
-```
+## Using the OpenAPI Specification
+This project utilizes the OpenAPI Specification to define and document the API endpoints. 
+You can import this [specification](https://github.com/nicholasM95/six-letter-words-api/blob/main/word-adapter/src/main/resources/word-openapi-spec.yaml) into tools like Postman for easy testing and interaction with the API.
