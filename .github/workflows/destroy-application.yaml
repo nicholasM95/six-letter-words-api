@@ -11,6 +11,7 @@ env:
   AWS_ROLE: 'arn:aws:iam::896918338968:role/SixLetterWordsApiGithubRole'
   CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
   CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+  PUBLIC_IP: ${{ secrets.PUBLIC_IP }}
 
 jobs:
   destroy:
@@ -64,10 +65,10 @@ jobs:
 
       - name: Terraform Plan Destroy
         id: plan-destroy
-        run: terraform plan -var image_tag=foobar -destroy
+        run: terraform plan -var image_tag=foobar -var public_ip=$PUBLIC_IP -destroy
         working-directory: infra/env/tst
 
       - name: Terraform Destroy
         id: destroy
-        run: terraform destroy -var image_tag=foobar -auto-approve
+        run: terraform destroy -var image_tag=foobar -var public_ip=$PUBLIC_IP -auto-approve
         working-directory: infra/env/tst

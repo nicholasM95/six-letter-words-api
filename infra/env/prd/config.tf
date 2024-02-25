@@ -12,7 +12,7 @@ terraform {
 
     cloudflare = {
       source  = "cloudflare/cloudflare"
-      version = "~> 4.0"
+      version = "4.25.0"
     }
 
   }
@@ -39,3 +39,5 @@ provider "helm" {
     config_path = "/home/runner/work/six-letter-words-api/six-letter-words-api/k8s.config"
   }
 }
+
+provider "cloudflare" {}
