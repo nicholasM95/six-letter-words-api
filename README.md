@@ -15,6 +15,16 @@ curl http://localhost:8080/word
 curl http://localhost:8080/word/{id}
 ```
 
+```bash
+curl https://six-letter-words-api.nicholasmeyers.be/word --form file=@"word.txt"
+```
+```bash
+curl https://six-letter-words-api.nicholasmeyers.be/word
+```
+```bash
+curl https://six-letter-words-api.nicholasmeyers.be/word/{id}
+```
+
 
 ## Using the OpenAPI Specification
 This project utilizes the OpenAPI Specification to define and document the API endpoints. 
