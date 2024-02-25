@@ -57,7 +57,7 @@ public class StorageServiceTest {
                 llo
                 lo
                 """, StandardCharsets.UTF_8);
-        service.uploadFile(file);
+        service.uploadFile(file, "input.txt");
     }
 
     @Test
