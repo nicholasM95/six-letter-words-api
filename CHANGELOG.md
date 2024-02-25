@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/nicholasM95/six-letter-words-api/compare/v1.2.0...v1.2.1) (2024-02-25)
+
+
+### Bug Fixes
+
+* **ci:** fix deployment ([55153ee](https://github.com/nicholasM95/six-letter-words-api/commit/55153ee80243394d5b28f088ba35e424f10526ae))
+
 # [1.2.0](https://github.com/nicholasM95/six-letter-words-api/compare/v1.1.0...v1.2.0) (2024-02-25)
 
 
