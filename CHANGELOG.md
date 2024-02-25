@@ -1,3 +1,22 @@
+# [1.1.0](https://github.com/nicholasM95/six-letter-words-api/compare/v1.0.0...v1.1.0) (2024-02-25)
+
+
+### Features
+
+* add logging ([1783f93](https://github.com/nicholasM95/six-letter-words-api/commit/1783f936e849fa6678f4ea36acc97d06bc8822e1))
+* refactor file name ([abc8d79](https://github.com/nicholasM95/six-letter-words-api/commit/abc8d794424c2662cfba664f5f3b70842e3a2c09))
+* refactor file upload ([6c4c6ac](https://github.com/nicholasM95/six-letter-words-api/commit/6c4c6ac7702a18e8a299becf04d6b08b4ce13581))
+* refactor prod properties ([a0ec9d7](https://github.com/nicholasM95/six-letter-words-api/commit/a0ec9d7d47211da8e3aba7ad10da8fc0dcb744de))
+* **api:** save files and data ([0edf8e4](https://github.com/nicholasM95/six-letter-words-api/commit/0edf8e4c74458935fb0f7f63f01fb0d5728c8578))
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.amazonaws:aws-java-sdk to v1.12.664 ([8f4b9b7](https://github.com/nicholasM95/six-letter-words-api/commit/8f4b9b730ce192b611380e13b653c9afe10f0050))
+* **deps:** update dependency io.swagger.parser.v3:swagger-parser to v2.1.20 ([d552204](https://github.com/nicholasM95/six-letter-words-api/commit/d55220417fc8862f925a6f8194c23b1a1492d892))
+* **deps:** update dependency org.apache.tika:tika-core to v2.9.1 ([8915acf](https://github.com/nicholasM95/six-letter-words-api/commit/8915acff5a3c2b51df1a894f5e088675f5395281))
+* **deps:** update dependency software.amazon.awssdk:rds to v2.24.8 ([fca5076](https://github.com/nicholasM95/six-letter-words-api/commit/fca507639b0ccf998d1bb4f191a7a90f08d8e32e))
+
 # 1.0.0 (2024-02-19)
 
 
