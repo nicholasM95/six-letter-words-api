@@ -26,10 +26,10 @@ public class StorageService implements FileStorageService {
     private final AmazonS3 storageClient;
 
     @Override
-    public void uploadFile(File file) {
-        PutObjectRequest putObjectRequest = new PutObjectRequest(bucket, file.getName(), file);
+    public void uploadFile(File file, String fileName) {
+        PutObjectRequest putObjectRequest = new PutObjectRequest(bucket, fileName, file);
         storageClient.putObject(putObjectRequest);
-        log.info("File {} saved in S3", file.getName());
+        log.info("File {} saved in S3", fileName);
         file.deleteOnExit();
     }
 

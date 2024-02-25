@@ -26,12 +26,12 @@ public class WordUseCase {
     private final WordRepository wordRepository;
     private final FileStorageService fileStorageService;
 
-    public WordCreatedModel processWordFile(File file) throws IOException {
+    public WordCreatedModel processWordFile(File file, String fileName) throws IOException {
         String wordFileContent = new String(Files.readAllBytes(file.toPath()));
         List<WordModel> results = processWordFile(wordFileContent);
 
-        UUID id = wordRepository.save(file.getName());
-        fileStorageService.uploadFile(file);
+        UUID id = wordRepository.save(fileName);
+        fileStorageService.uploadFile(file, fileName);
         return new WordCreatedModel(id, results);
     }
 

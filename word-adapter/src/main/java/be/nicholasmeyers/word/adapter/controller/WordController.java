@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -35,11 +34,11 @@ public class WordController implements WordApi {
 
     @Override
     public ResponseEntity<List<WordResponseResource>> processWordFile(MultipartFile multipartFile) throws IOException, URISyntaxException {
-        File file = new File(LocalDateTime.now().toEpochSecond(java.time.ZoneOffset.UTC) + "_" + multipartFile.getOriginalFilename());
+        File file = File.createTempFile("upload", ".txt");
         FileUtils.copyInputStreamToFile(multipartFile.getInputStream(), file);
 
         if (isContentTypeValid(new FileInputStream(file))) {
-            WordCreatedModel wordCreatedModel = wordUseCase.processWordFile(file);
+            WordCreatedModel wordCreatedModel = wordUseCase.processWordFile(file, multipartFile.getOriginalFilename());
             List<WordResponseResource> responseResources = wordCreatedModel.results()
                     .stream()
                     .map(result -> WordResponseResource.builder()

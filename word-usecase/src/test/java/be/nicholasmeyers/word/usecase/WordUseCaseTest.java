@@ -52,15 +52,15 @@ public class WordUseCaseTest {
 
         File file = createFileWithContent(wordFileContent);
 
-        List<WordModel> words = wordUseCase.processWordFile(file).results();
+        List<WordModel> words = wordUseCase.processWordFile(file, "input.txt").results();
         Assertions.assertEquals(1, words.size());
         Assertions.assertEquals("word", words.getFirst().value());
         Assertions.assertEquals(2, words.getFirst().parts().size());
         Assertions.assertEquals("wo", words.getFirst().parts().getFirst());
         Assertions.assertEquals("rd", words.getFirst().parts().get(1));
 
-        Mockito.verify(wordRepository).save(file.getName());
-        Mockito.verify(fileStorageService).uploadFile(file);
+        Mockito.verify(wordRepository).save("input.txt");
+        Mockito.verify(fileStorageService).uploadFile(file, "input.txt");
     }
 
     @Test
