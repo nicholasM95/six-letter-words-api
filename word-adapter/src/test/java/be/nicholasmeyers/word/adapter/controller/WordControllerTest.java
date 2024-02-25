@@ -57,7 +57,7 @@ public class WordControllerTest {
 
         ArgumentCaptor<File> fileArgumentCaptor = ArgumentCaptor.forClass(File.class);
         Mockito
-                .when(wordUseCase.processWordFile(fileArgumentCaptor.capture(), Mockito.eq("file.txt")))
+                .when(wordUseCase.processWordFile(fileArgumentCaptor.capture(), Mockito.eq("1728555000_file.txt")))
                 .thenReturn(new WordCreatedModel(UUID.fromString("031e06cc-bfee-4d5a-a3f2-83ccc5e4fc36"), Collections.singletonList(new WordModel("word", Arrays.asList("wo", "rd")))));
 
         MockMultipartFile file = new MockMultipartFile(
