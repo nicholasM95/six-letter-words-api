@@ -1,0 +1,69 @@
+name: Deploy application
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: 'Enter a value for image_tag'
+        required: true
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  AWS_ROLE: 'arn:aws:iam::896918338968:role/SixLetterWordsApiGithubRole'
+  CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
+  CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: 20
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4.0.2
+        with:
+          role-to-assume: ${{ env.AWS_ROLE }}
+          aws-region: eu-west-1
+
+      - name: Configure K8S credentials
+        run: echo $K8S_CONFIG | base64 -d > k8s.config
+        env:
+          K8S_CONFIG: ${{ secrets.K8S_CONFIG }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@a1502cd9e758c50496cc9ac5308c4843bcd56d36 # v3.0.0
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+        working-directory: infra/env/prd
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+        working-directory: infra/env/prd
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+        working-directory: infra/env/prd
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -var image_tag=${{ github.event.inputs.image_tag }}
+        working-directory: infra/env/prd
+
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -var image_tag=${{ github.event.inputs.image_tag }} -auto-approve
+        working-directory: infra/env/prd
