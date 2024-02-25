@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,7 +39,7 @@ public class WordController implements WordApi {
         FileUtils.copyInputStreamToFile(multipartFile.getInputStream(), file);
 
         if (isContentTypeValid(new FileInputStream(file))) {
-            WordCreatedModel wordCreatedModel = wordUseCase.processWordFile(file, multipartFile.getOriginalFilename());
+            WordCreatedModel wordCreatedModel = wordUseCase.processWordFile(file, LocalDateTime.now().toEpochSecond(java.time.ZoneOffset.UTC) + "_" + multipartFile.getOriginalFilename());
             List<WordResponseResource> responseResources = wordCreatedModel.results()
                     .stream()
                     .map(result -> WordResponseResource.builder()
