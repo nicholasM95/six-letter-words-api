@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/nicholasM95/six-letter-words-api/compare/v1.1.0...v1.2.0) (2024-02-25)
+
+
+### Features
+
+* **ci:** add cloudflare secrets ([82e346d](https://github.com/nicholasM95/six-letter-words-api/commit/82e346dc346c820cd658af4636480826c280781d))
+* **ci:** add deployment ([4190396](https://github.com/nicholasM95/six-letter-words-api/commit/41903965aac91f9b22ae7634656041e74d6124f3))
+
 # [1.1.0](https://github.com/nicholasM95/six-letter-words-api/compare/v1.0.0...v1.1.0) (2024-02-25)
 
 
