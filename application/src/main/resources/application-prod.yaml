@@ -1,4 +1,11 @@
 bucket:
+  region: ${BUCKET_REGION}
   name: ${BUCKET_NAME}
 
-spring.datasource.type: be.nicholasmeyers.word.adapter.config.RDSIAMDataSource
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USER}
+    type: be.nicholasmeyers.word.adapter.config.RDSIAMDataSource
+    hikari:
+      max-lifetime: 840000
