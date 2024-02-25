@@ -5,8 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages = {
-        "be.nicholasmeyers.word.adapter.controller",
-        "be.nicholasmeyers.word.adapter.advisor"
+        "be.nicholasmeyers.word.adapter.controller"
 })
 public class ControllerTestConfig {
 }

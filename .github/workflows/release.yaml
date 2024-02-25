@@ -35,7 +35,7 @@ jobs:
           cache: 'maven'
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v4.0.1
+        uses: actions/setup-node@v4.0.2
         with:
           node-version: 20
 
@@ -44,7 +44,7 @@ jobs:
           npm install semantic-release @semantic-release/exec @semantic-release/changelog @semantic-release/github
 
       - name: Log in to the Container registry
-        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        uses: docker/login-action@5139682d94efc37792e6b54386b5b470a68a4737
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}

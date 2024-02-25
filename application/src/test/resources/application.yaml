@@ -1,0 +1,4 @@
+spring.datasource.url: jdbc:tc:postgresql:14.7-alpine3.17:///word
+bucket:
+  region: eu-west-1
+  name: test-bucket
