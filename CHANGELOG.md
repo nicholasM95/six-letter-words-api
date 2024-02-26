@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/nicholasM95/six-letter-words-api/compare/v1.2.1...v1.2.2) (2024-02-26)
+
+
+### Bug Fixes
+
+* **ci:** fix destroy pipeline ([10fb517](https://github.com/nicholasM95/six-letter-words-api/commit/10fb517f2c0cc81c300e60b7b290f9112b258d66))
+
 ## [1.2.1](https://github.com/nicholasM95/six-letter-words-api/compare/v1.2.0...v1.2.1) (2024-02-25)
 
 
